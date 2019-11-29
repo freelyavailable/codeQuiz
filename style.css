@@ -2,7 +2,7 @@ body {
 
     /* background-image: url("assets/images/logo2.jpg");
     background-size: cover;  */
-    background: darkgray; 
+    background: white; 
 
 }
 .jumbotron {
@@ -26,8 +26,13 @@ body {
     margin: 10px; 
 }
 
+#button-display{
+    
+    width:50%;
+}
+
 .container { 
-    background: whitesmoke; 
+    background: white; 
     padding: 50px; 
     border: 10px;
     border-color: black; 
@@ -46,8 +51,10 @@ body {
 }
 
 .question-display { 
-    color:#93151c; 
+    color:black;
+    font-weight: bold; 
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 24px;
 }
 
 .image-correct, .image-incorrect, .image-timeout{ 
@@ -59,24 +66,16 @@ body {
 }
 
 .answerButton { 
-    /* color: #2bafe4; 
-    border: #2bafe4;  */
-    width: 200px; 
+    background: #4B0082;
+    color: white; 
+    border-radius: 10%;
+    width: auto; 
     margin: 10px; 
+    padding:10px;
 }
 
-
+.answerButton:hover{
+    opacity: 0.6
+}
     
 
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
