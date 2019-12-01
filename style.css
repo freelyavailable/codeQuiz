@@ -5,6 +5,14 @@ body {
     background: white; 
 
 }
+
+header {
+    width:100%;
+}
+
+h2 {
+
+}
 .jumbotron {
     background-image: url("../images/umbrellas.png"); 
     background-size: cover; 
@@ -34,22 +42,39 @@ body {
 .container { 
     background: white; 
     padding: 50px; 
-    border: 10px;
-    border-color: black; 
+
 }
 
-
+#message{
+    width:100%;
+}
+.card{
+    margin-top:5%;
+    text-align: center;
+    border: none;
+}
 /* .col-md-1 { 
     background-image: url("../images/playingthegame.jpg"); 
     background-size: cover; 
 } */
 
-.countdown { 
-    color: #2BAFE4; 
-    align-content: center; 
+.timer { 
+    color: black; 
+    float:right;
+    text-align: right;
+    align-content: right;
+    padding:10px; 
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
 }
 
+.highScore{
+    color: #4B0082; 
+    float:left;
+    text-align: left;
+    align-content: left;
+    padding: 10px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
 .question-display { 
     color:black;
     font-weight: bold; 
@@ -65,10 +90,20 @@ body {
     width: 200px; 
 }
 
-.answerButton { 
+.answerButton{ 
     background: #4B0082;
     color: white; 
-    border-radius: 10%;
+    border-radius: 25%;
+    width: auto; 
+    margin: 10px; 
+    padding:10px;
+}
+
+#start{
+    text-align: center;
+    background: #4B0082;
+    color: white; 
+    border-radius: 25%;
     width: auto; 
     margin: 10px; 
     padding:10px;

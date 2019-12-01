@@ -12,8 +12,8 @@ $(".btn-dark").on("click", function() {
     //window.location.href='questions.html';
     // set timeout for theme music so it doesn't play the whole time
     setTimeout(function(){
-        quizQuestion.getQuestion()
-        //$("#theme")[0].pause(); 
+        quizQuestion.getQuestion();
+        quizQuestion.run(); 
     },0);
     
 
@@ -23,6 +23,12 @@ $(".btn-dark").on("click", function() {
 $(".btn-secondary").on("click", function() {
     console.log("user clicked Restart");
     $(".final-page").hide();
+    $(".timer").show();
+    $(".timer").html("Time: 75")
+    $(".highScore").html("View High Score");
+    $(".question-display").show();
+    $("#button-display").show();
+    quizQuestion.run();
     quizQuestion.questionNumber = 0; 
     quizQuestion.correctGuesses = 0; 
     quizQuestion.incorrectGuesses = 0; 
@@ -30,6 +36,11 @@ $(".btn-secondary").on("click", function() {
     quizQuestion.getQuestion(); 
 })
 
+$(".highScore").on("click", function() {
+    console.log("user clicked highScore");
+
+    $("highScore").html("High Score: " + quizQuestion.viewHighScore());
+})
 // ON CLICK FOR ANSWER BUTTONS
 $("#button-display").on("click", ".answerButton", function (e) {
     // answerButton.clicked(e); 
@@ -39,10 +50,11 @@ $("#button-display").on("click", ".answerButton", function (e) {
     console.log(e.target.data);
     console.log($(e.target).attr("data-name")); 
     quizQuestion.checkAnswer(selectedAnswer); 
-    // trivia.answerIncorrect(selectedAnswer); 
+    // quizQuestion.answerIncorrect(selectedAnswer); 
 })
 
-
+var Counter = 0;
+var highScore = 0;
 var quizQuestion = {
     // current question
     currentQuestion: "",
@@ -54,10 +66,13 @@ var quizQuestion = {
     timeOuts: 0,
     // counter 
     counter: 3,
-    counterTimer: null,
+    countDownTimer: null,
     // question number 
     questionNumber: 0,
-    // // correct audio
+    
+    
+
+
     // yay:  
 
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF QUESTIONS
@@ -119,25 +134,29 @@ var quizQuestion = {
     ], 
 
 
-
-    //run: function () {
-    //    clearInterval(this.counterTimer); 
-    //    this.counterTimer = setInterval(this.decrement, 1000); 
-     //   quizQuestion.counter = 10; 
-    //}, 
+    run: function () {
+        clearInterval(this.countDownTimer); 
+        this.countDownTimer = setInterval(this.decrement, 1000); 
+        quizQuestion.counter = 75; 
+    }, 
     
     decrement: function () {
         quizQuestion.counter--; 
-        //$(".countdown").html(quizQuestion.counter + " seconds left to answer");
+        $(".timer").html("Time: " + quizQuestion.counter);
         if (quizQuestion.counter === 0) {
-            clearInterval(quizQuestion.counterTimer);
-            quizQuestion.checkAnswer(); 
+            
+            clearInterval(quizQuestion.countDownTimer);
+            //quizQuestion.checkAnswer();
+            quizQuestion.finalPage();
+            $(".question-display").hide();
+            $("#button-display").hide();
         }
         
     }, 
     
     // GET QUESTION METHOD
     getQuestion: function () {
+        
         // clear and hide a bunch of things when the question loads
         $(".question-display").empty(); 
         $(".areYouRight").empty();
@@ -145,8 +164,8 @@ var quizQuestion = {
         //$(".image-correct").hide ();
         //$(".image-incorrect").hide ();
         //$(".image-timeout").hide();  
-        // start the countdown
-        //this.run ();
+        //start the countdown
+      
         // display the question on the screen 
         //$(".countdown").html(this.counter + " seconds left to answer"); 
         // display question 
@@ -190,6 +209,8 @@ var quizQuestion = {
             this.correctGuesses++; 
             console.log (this.correctGuesses);
             // display win message and image and play sound
+      //      var foo = "<hr/>";
+           
             $(".areYouRight").html("Correct!"); 
            
             
@@ -201,6 +222,8 @@ var quizQuestion = {
             // increment incorrect guess 
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
+            //Deduct 5 seconds for incorrect answer
+            quizQuestion.counter = quizQuestion.counter - 5;
             // display lose message and image and play sound
             $(".areYouRight").html("Wrong!");
            
@@ -216,11 +239,11 @@ var quizQuestion = {
     //DISPLAY ANSWER PAGE 
     answerPage: function () {
         // clear question-display div, button displat, and countdown divs
-        $(".question-display").empty();  
-        $("#button-display").empty(); 
-        $(".countdown").empty(); 
+        //$(".question-display").empty();  
+        //$("#button-display").empty(); 
+        //$(".countdown").empty(); 
         // clear countdown
-        clearInterval(quizQuestion.counterTimer);
+        
         // check for last question
         setTimeout (function (){
             if (quizQuestion.questionNumber < quizQuestion.questions.length){
@@ -235,20 +258,32 @@ var quizQuestion = {
         
     }, 
 
+    viewHighScore: function (){
+        $(".highScore").html("Highscore: " + highScore);
+    },
+
     // DISPLAY STATS PAGE WITH FINAL COUNTS AND A RESTART
     finalPage: function () {
         // empty and hide divs
         $(".question-display").empty();  
         $("#button-display").empty(); 
         $(".areYouRight").empty(); 
-        $(".image-correct").hide ();
-        $(".image-incorrect").hide ();
+        $(".timer").hide();
+        //$(".image-correct").hide ();
+        //$(".image-incorrect").hide ();
         $(".final-page").show (); 
-        // display messages for correct, incorrect and time out 
+        
+        // set high score
+        if(this.correctGuesses > highScore){
+            highScore = this.correctGuesses;
+            $(".highScore").html("Highscore: " + highScore);
+        }
         $("#message").html("<h2>You're done! Here are your results:</h2>");
         $("#correct").html("Correct Guesses: " + this.correctGuesses);  
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
-        $("#time-out").html("Time Outs: " + this.timeOuts);
+        clearInterval(quizQuestion.countDownTimer);
+        //$("#time-out").html("Time Outs: " + this.timeOuts);
     }
 
 }; 
+
