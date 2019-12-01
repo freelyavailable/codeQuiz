@@ -274,12 +274,13 @@ var quizQuestion = {
         $(".final-page").show (); 
         
         // set high score
-        if(this.correctGuesses > highScore){
-            highScore = this.correctGuesses;
+        if(quizQuestion.counter > highScore){
+            highScore = quizQuestion.counter;
             $(".highScore").html("Highscore: " + highScore);
         }
-        $("#message").html("<h2>You're done! Here are your results:</h2>");
-        $("#correct").html("Correct Guesses: " + this.correctGuesses);  
+        $("#message").html("<h2>All done!</h2><p>Here are your results:</p>");
+        $("#score").html("Your final score is " + quizQuestion.counter); 
+        $("#correct").html("Correct Guesses: " + this.correctGuesses); 
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
         clearInterval(quizQuestion.countDownTimer);
         //$("#time-out").html("Time Outs: " + this.timeOuts);

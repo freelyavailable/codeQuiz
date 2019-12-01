@@ -13,6 +13,15 @@ header {
 h2 {
 
 }
+
+form{
+    display:flex;
+   
+}
+
+input{
+    margin-left:10px;
+}
 .jumbotron {
     background-image: url("../images/umbrellas.png"); 
     background-size: cover; 
@@ -93,20 +102,20 @@ h2 {
 .answerButton{ 
     background: #4B0082;
     color: white; 
-    border-radius: 25%;
+    border-radius: 5px; 
     width: auto; 
     margin: 10px; 
-    padding:10px;
+    padding:5px 10px 5px 10px;
 }
 
 #start{
     text-align: center;
     background: #4B0082;
     color: white; 
-    border-radius: 25%;
+    border-radius: 5px;
     width: auto; 
     margin: 10px; 
-    padding:10px;
+    padding:5px 10px 5px 10px;
 }
 
 .answerButton:hover{
