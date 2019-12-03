@@ -127,6 +127,7 @@ input{
 }
 #hsTitle{
     font-weight: bold;
+    padding-bottom: 30px;
 }
 
 #hsArray{
