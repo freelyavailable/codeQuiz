@@ -200,9 +200,8 @@ var quizQuestion = {
             a.addClass("answerButton");
             a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]);
             a.text(this.questions[this.questionNumber].questionAnswer[i]);
-            
-            $("#button-display").append(a);
-            
+            //display button
+            $("#button-display").append(a);            
         };
     },
 
@@ -327,20 +326,24 @@ var quizQuestion = {
 
         // Create the list
 
-        /*const highScoresList = document.getElementById("#hsArray");
+        const highScoresList = document.getElementById("#hsArray");
         const highScores = JSON.parse(localStorage.getItem("highScoresArray")) || [];
 
-        highScoresList.innerHTML = highScores
-            .map(scoreValues => {
-                return '<li class="high-score">${scoreValues.name}--${scoreValues.score}<li>';
-            })
-            .join("");*/
+        //highScoresList.innerHTML = highScores
+            highScoresArray.map(scoreValues => {
+                if(scoreValues.score !=0){
+                console.log(scoreValues.initials + " --- " + scoreValues.score);
+                $("#hsArray").append('<li>' + scoreValues.initials + " --- " + scoreValues.score + '</li>');
+                //return '<li class="high-score">${scoreValues.name}--${scoreValues.score}<li>';
+                }
+            });
+           // .join("");
 
 
 
 
 
-        for (var i = 0; i < highScoresArray.length; i++) {
+        /*for (var i = 0; i < highScoresArray.length; i++) {
             // Display the array of top 5 highest scores with initials to the screen
             if (highScoresArray[i] != null) {
                 $("#hsArray").append('<li>' + JSON.stringify(highScoresArray[i]) + '</li>');
@@ -348,7 +351,7 @@ var quizQuestion = {
             } else {
                 console.log("null value in high scores");
             }
-        }
+        }*/
     }
 }
 
