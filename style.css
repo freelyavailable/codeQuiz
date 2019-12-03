@@ -1,9 +1,5 @@
 body {
-
-    /* background-image: url("assets/images/logo2.jpg");
-    background-size: cover;  */
     background: white; 
-
 }
 
 header {
@@ -15,17 +11,14 @@ h2 {
 }
 
 form{
-    display:flex;
-   
+    display:flex; 
 }
 
+li{
+    list-style-type: none;
+}
 input{
     margin-left:10px;
-}
-.jumbotron {
-    background-image: url("../images/umbrellas.png"); 
-    background-size: cover; 
-    height: 400px; 
 }
 
 .display-4 {
@@ -44,14 +37,12 @@ input{
 }
 
 #button-display{
-    
     width:50%;
 }
 
 .container { 
     background: white; 
     padding: 50px; 
-
 }
 
 #message{
@@ -62,10 +53,6 @@ input{
     text-align: center;
     border: none;
 }
-/* .col-md-1 { 
-    background-image: url("../images/playingthegame.jpg"); 
-    background-size: cover; 
-} */
 
 .timer { 
     color: black; 
@@ -91,15 +78,7 @@ input{
     font-size: 24px;
 }
 
-.image-correct, .image-incorrect, .image-timeout{ 
-    display:none;
-}
-
-.image-correct img, .image-incorrect img, .image-timeout img{ 
-    width: 200px; 
-}
-
-.answerButton{ 
+/*.answerButton{ 
     background: #4B0082;
     color: white; 
     border-radius: 5px; 
@@ -116,10 +95,48 @@ input{
     width: auto; 
     margin: 10px; 
     padding:5px 10px 5px 10px;
+}*/
+
+#resetScores, #goBack, #start, .answerButton{
+    text-align: center;
+    background: #4B0082;
+    color: white; 
+    border-radius: 5px;
+    width: auto; 
+    margin: 10px; 
+    padding:5px 10px 5px 10px;
 }
 
+
+#submitInitials{
+    display: inline; 
+    margin-left:10px; 
+    background:#4B0082; 
+    color:black; 
+    border-radius: 5px;
+}
 .answerButton:hover{
     opacity: 0.6
 }
+#hsTitle{
+    font-weight: bold;
+}
+
+#hsArray{
+    padding: 0px;
+}
+#hsArray li{
+    border:1px solid lightgrey;
+    background:#ede1f7;
+    margin-top: 10px;
+    padding:2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    color:black !important;
     
+    width:100%;
+}
+    
+#hsArray li:hover{
+    opacity: 80%;
+}
 

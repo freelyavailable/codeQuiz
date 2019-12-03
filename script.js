@@ -1,59 +1,92 @@
 // ON CLICK EVENT FOR START BUTTON TO LOAD A QUESTION AND HIDE THE START BUTTON 
-$(".btn-dark").on("click", function() {
-    
-    // remove button from view 
-    $(".card").remove();
-    // play theme song
-    //$("#theme")[0].play(); 
-    // display some text while the "game loads"
-    //$(".ready").html("<h1> Get Ready!!</h1>")
-    // log to console
+$(".btn-dark").on("click", function () {
+    // remove homepage from view 
+    $(".card").hide();
     console.log("user clicked start");
-    //window.location.href='questions.html';
-    // set timeout for theme music so it doesn't play the whole time
-    setTimeout(function(){
-        quizQuestion.getQuestion();
-        quizQuestion.run(); 
-    },0);
-    
+    //Get the first question
+    $(".highScorePage").hide();
+    $(".final-page").hide();
+    $(".timer").show();
+    $(".timer").html("Time: 75")
+    $(".highScore").html("View Highscores");
+    $(".question-display").show();
+    $("#button-display").show();
+    quizQuestion.run();
+    quizQuestion.questionNumber = 0;
+    quizQuestion.correctGuesses = 0;
+    quizQuestion.incorrectGuesses = 0;
+    quizQuestion.getQuestion();
 
 })
 
 // ON CLICK FOR RESET BUTTON - RESETS GAME
-$(".btn-secondary").on("click", function() {
+$(".btn-secondary").on("click", function () {
     console.log("user clicked Restart");
+    $(".highScorePage").hide();
     $(".final-page").hide();
     $(".timer").show();
     $(".timer").html("Time: 75")
-    $(".highScore").html("View High Score");
+    $(".highScore").html("View Highscores");
     $(".question-display").show();
     $("#button-display").show();
     quizQuestion.run();
-    quizQuestion.questionNumber = 0; 
-    quizQuestion.correctGuesses = 0; 
-    quizQuestion.incorrectGuesses = 0; 
-    quizQuestion.timeOuts = 0;  
-    quizQuestion.getQuestion(); 
+    quizQuestion.questionNumber = 0;
+    quizQuestion.correctGuesses = 0;
+    quizQuestion.incorrectGuesses = 0;
+
+    quizQuestion.getQuestion();
 })
 
-$(".highScore").on("click", function() {
+$("#submitInitials").on("click", function () {
+    console.log("user clicked submit initials for high scores");
+    $(".highScorePage").show();
+    quizQuestion.highScorePage();
+})
+
+$("#resetScores").on("click", function () {
+    console.log("user clicked reset high scores");
+    localStorage.clear();
+    $("#hsArray").hide();
+})
+
+$("#goBack").on("click", function () {
+    console.log("user clicked to return from high scores high scores");
+    clearInterval(quizQuestion.countDownTimer);
+    $(".question-display").hide();
+    $("#button-display").hide();
+    $(".highScorePage").hide();
+    $(".card").show();
+    $(".timer").show();
+    $(".timer").html("Time: 75");
+
+    $(".highScore").show();
+    $("#hsArray").empty();
+
+})
+
+
+//Determine high score to be replaced
+$(".highScore").on("click", function () {
     console.log("user clicked highScore");
-
-    $("highScore").html("High Score: " + quizQuestion.viewHighScore());
+    quizQuestion.counter = 0;
+    quizQuestion.highScorePage();
 })
+
+
 // ON CLICK FOR ANSWER BUTTONS
 $("#button-display").on("click", ".answerButton", function (e) {
     // answerButton.clicked(e); 
-    var selectedAnswer = $(e.target).attr("data-name"); 
-    console.log(e); 
-    console.log(e.target); 
+    var selectedAnswer = $(e.target).attr("data-name");
+    console.log(e);
+    console.log(e.target);
     console.log(e.target.data);
-    console.log($(e.target).attr("data-name")); 
-    quizQuestion.checkAnswer(selectedAnswer); 
-    // quizQuestion.answerIncorrect(selectedAnswer); 
+    console.log($(e.target).attr("data-name"));
+    quizQuestion.checkAnswer(selectedAnswer);
 })
 
+// Global Variables
 var Counter = 0;
+var hrLine = document.createElement("hr");
 var highScore = 0;
 var quizQuestion = {
     // current question
@@ -62,18 +95,12 @@ var quizQuestion = {
     correctGuesses: 0,
     // incorrect answers 
     incorrectGuesses: 0,
-    // timeouts 
-    timeOuts: 0,
     // counter 
-    counter: 3,
+    counter: 0,
     countDownTimer: null,
     // question number 
     questionNumber: 0,
-    
-    
 
-
-    // yay:  
 
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF QUESTIONS
     // Questions from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JavaScript
@@ -93,7 +120,7 @@ var quizQuestion = {
         },
         {
             questionText: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-            questionAnswer: ['1.  <script name="xxx.js">' , '2.  <script src="xxx.js">' , '3.  <script href="xxx.js">' , '4.  <script call="xxx.js">'],
+            questionAnswer: ['1.  <script name="xxx.js">', '2.  <script src="xxx.js">', '3.  <script href="xxx.js">', '4.  <script call="xxx.js">'],
             answer: '2.  <script src="xxx.js">',
         },
         {
@@ -131,160 +158,198 @@ var quizQuestion = {
             questionAnswer: ["1.  <!--This is a comment-->", '"2.  This is a comment"', "3.  //This is a comment", "4.  ***This is a comment***"],
             answer: "3.  //This is a comment",
         },
-    ], 
-
+    ],
 
     run: function () {
-        clearInterval(this.countDownTimer); 
-        this.countDownTimer = setInterval(this.decrement, 1000); 
-        quizQuestion.counter = 75; 
-    }, 
-    
+        clearInterval(this.countDownTimer);
+        this.countDownTimer = setInterval(this.decrement, 1000);
+        quizQuestion.counter = 75;
+    },
+
     decrement: function () {
-        quizQuestion.counter--; 
+        quizQuestion.counter--;
         $(".timer").html("Time: " + quizQuestion.counter);
-        if (quizQuestion.counter === 0) {
-            
+        if (quizQuestion.counter <= 0) {
+            quizQuestion.counter = 0;
             clearInterval(quizQuestion.countDownTimer);
-            //quizQuestion.checkAnswer();
             quizQuestion.finalPage();
             $(".question-display").hide();
             $("#button-display").hide();
         }
-        
-    }, 
-    
+    },
+
     // GET QUESTION METHOD
     getQuestion: function () {
         
         // clear and hide a bunch of things when the question loads
-        $(".question-display").empty(); 
+        $(".question-display").empty();
         $(".areYouRight").empty();
-        $(".ready").empty();  
-        //$(".image-correct").hide ();
-        //$(".image-incorrect").hide ();
-        //$(".image-timeout").hide();  
-        //start the countdown
-      
-        // display the question on the screen 
-        //$(".countdown").html(this.counter + " seconds left to answer"); 
+        $(".ready").empty();
         // display question 
-        $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>"); 
-        this.buttonGenerator();         
-    }, 
+        $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>");
+        this.buttonGenerator();
+    },
 
     //BUTTON GENERATOR METHOD 
     buttonGenerator: function () {
-    //empty buttons 
-        $("#button-display").empty(); 
+        //empty buttons 
+        $("#button-display").empty();
         // for loop to display answer buttons on the screen 
         for (var i = 0; i < this.questions[this.questionNumber].questionAnswer.length; i++) {
-            var a = $("<button>"); 
-            a.addClass("answerButton"); 
-            a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]); 
-            a.text(this.questions[this.questionNumber].questionAnswer[i]); 
-            $("#button-display").append(a);   
+            var a = $("<button>");
+            a.addClass("answerButton");
+            a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]);
+            a.text(this.questions[this.questionNumber].questionAnswer[i]);
+            
+            $("#button-display").append(a);
+            
         };
-    }, 
+    },
 
     // CHECK IF THE ANSWER IS CORRECT, WRONG, OR IF THE QUESTION TIMED OUT (UNDEFINED) 
     checkAnswer: function (selectedAnswer) {
         //determine if the answer is correct 
-        console.log(this.questions[this.questionNumber]); 
-        // if the answer is undefined (timeout) 
-        //if (selectedAnswer === undefined) {
-            // show the timeout message and image and play sound  
-        //    $(".areYouRight").html("You ran out of time."); 
-        //    $(".image-timeout").show ();
-        //    $("#timeout")[0].play(); 
-            // next question 
-         //   this.questionNumber++; 
-            // add to timeout var
-         //   this.timeOuts++; 
-        //}
-        // if the answer matches the correct one
+        console.log(this.questions[this.questionNumber]);
+
         if (selectedAnswer === this.questions[this.questionNumber].answer) {
-            console.log("win");  
+            console.log("win");
             // increment the number correct 
-            this.correctGuesses++; 
-            console.log (this.correctGuesses);
+            this.correctGuesses++;
+            console.log(this.correctGuesses);
             // display win message and image and play sound
-      //      var foo = "<hr/>";
-           
-            $(".areYouRight").html("Correct!"); 
-           
-            
+            //var foo = "<hr/>";
+            //$(".areYouRight").append(foo);// append the hr
+            //document.body.appendChild(hrLine);
+            $(".areYouRight").html("Correct!");
             // next question 
-            this.questionNumber++; 
-        }    
+            this.questionNumber++;
+        }
         else {
-            console.log("lose"); 
+            console.log("lose");
             // increment incorrect guess 
-            this.incorrectGuesses++; 
-            console.log (this.incorrectGuesses);
+            this.incorrectGuesses++;
+            console.log(this.incorrectGuesses);
             //Deduct 5 seconds for incorrect answer
             quizQuestion.counter = quizQuestion.counter - 5;
             // display lose message and image and play sound
+            //document.body.child[0].child[1].appendChild(hrLine);
             $(".areYouRight").html("Wrong!");
-           
-           
             // next question   
-            this.questionNumber++; 
-        }  
-
+            this.questionNumber++;
+        }
         this.answerPage();
-            // this.answerPage(); 
-    }, 
+    },
 
     //DISPLAY ANSWER PAGE 
     answerPage: function () {
-        // clear question-display div, button displat, and countdown divs
-        //$(".question-display").empty();  
-        //$("#button-display").empty(); 
-        //$(".countdown").empty(); 
-        // clear countdown
-        
         // check for last question
-        setTimeout (function (){
-            if (quizQuestion.questionNumber < quizQuestion.questions.length){
-                quizQuestion.getQuestion(); 
+        setTimeout(function () {
+            if (quizQuestion.questionNumber < quizQuestion.questions.length) {
+                quizQuestion.getQuestion();
             }
-
             else {
-                quizQuestion.finalPage(); 
+                quizQuestion.finalPage();
             }
         }, 1000
         )
-        
-    }, 
+    },
 
-    viewHighScore: function (){
+    viewHighScore: function () {
         $(".highScore").html("Highscore: " + highScore);
     },
 
     // DISPLAY STATS PAGE WITH FINAL COUNTS AND A RESTART
     finalPage: function () {
         // empty and hide divs
-        $(".question-display").empty();  
-        $("#button-display").empty(); 
-        $(".areYouRight").empty(); 
+        $(".question-display").empty();
+        $("#button-display").empty();
+        $(".areYouRight").empty();
         $(".timer").hide();
-        //$(".image-correct").hide ();
-        //$(".image-incorrect").hide ();
-        $(".final-page").show (); 
-        
+        $(".final-page").show();
         // set high score
-        if(quizQuestion.counter > highScore){
-            highScore = quizQuestion.counter;
-            $(".highScore").html("Highscore: " + highScore);
-        }
+        //if(quizQuestion.counter > highScore){
+        //  highScore = quizQuestion.counter;
+        //$(".highScore").html("Highscore: " + highScore);
+        //}
         $("#message").html("<h2>All done!</h2><p>Here are your results:</p>");
-        $("#score").html("Your final score is " + quizQuestion.counter); 
-        $("#correct").html("Correct Guesses: " + this.correctGuesses); 
-        $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
+        $("#score").html("Your final score is " + quizQuestion.counter);
+        $("#correct").html("Correct Guesses: " + this.correctGuesses);
+        $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses);
         clearInterval(quizQuestion.countDownTimer);
-        //$("#time-out").html("Time Outs: " + this.timeOuts);
-    }
+    },
+    highScorePage: function () {
+        // Hide elements on page for highScorePage Element
+        clearInterval(quizQuestion.countDownTimer);
+        $(".card").hide();
+        $(".final-page").hide();
+        $(".timer").hide();
+        $(".timer").html("Time: 75")
+        $(".highScore").hide();
+        $(".question-display").hide();
+        $("#button-display").hide();
+        $(".highScorePage").show();
+        $("#hsArray").show();
+        console.log("completed highScore Page");
 
-}; 
+        //Create array to hold this games score and initials
+        //https://www.youtube.com/watch?v=DFhmNLKwwGw
+
+        //Assign boxValue to equal the submitted initials
+        var boxValue = document.getElementById('userInput').value; //Need help here 
+        //alert(boxValue);
+
+        // Create object to hold high score data
+        const scoreValues = {
+            score: quizQuestion.counter,   // Time left on clock assigned to 
+            initials: boxValue   //The variable hold the initials submitted by the user
+        };
+
+        const MAX_HIGH_SCORES = 5;
+        console.log(scoreValues);
+        //Create array to store high scores
+        const highScoresArray = JSON.parse(localStorage.getItem("highScoresArray")) || [];
+        console.log(highScoresArray);
+
+        //add new score to highScoreArray
+        highScoresArray.push(scoreValues);
+        console.log(highScoresArray);
+
+        //sort scores high to low
+        highScoresArray.sort((a, b) => b.score - a.score);
+        console.log(highScoresArray);
+
+        // Narrow to top 5 scores
+        highScoresArray.splice(5);
+
+        //Update local storage with revised highScoresArray
+        localStorage.setItem('highScoresArray', JSON.stringify(highScoresArray));
+        console.log(highScoresArray);
+
+        // Create the list
+
+        /*const highScoresList = document.getElementById("#hsArray");
+        const highScores = JSON.parse(localStorage.getItem("highScoresArray")) || [];
+
+        highScoresList.innerHTML = highScores
+            .map(scoreValues => {
+                return '<li class="high-score">${scoreValues.name}--${scoreValues.score}<li>';
+            })
+            .join("");*/
+
+
+
+
+
+        for (var i = 0; i < highScoresArray.length; i++) {
+            // Display the array of top 5 highest scores with initials to the screen
+            if (highScoresArray[i] != null) {
+                $("#hsArray").append('<li>' + JSON.stringify(highScoresArray[i]) + '</li>');
+                console.log(highScoresArray[i]);
+            } else {
+                console.log("null value in high scores");
+            }
+        }
+    }
+}
+
 

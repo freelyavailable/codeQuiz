@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Java Assessment Quiz</title>
+    <title>Coding Quiz Challenge</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -13,12 +13,12 @@
 <body>
 
 
-    <!-- DEFINES THE GAME CONTAINER -->
+    <!-- DEFINES THE QUIZ CONTAINER -->
     <header>
-        <div class="highScore">View High Score</div>
-        <div class="timer">Time: 00</div>
+        <div class="highScore">View Highscores</div>
+        <div class="timer">Time: 75</div>
     </header>
-    <div class="container" id="gameContainer">
+    <div class="container" id="quizContainer">
         <!-- DEFINES FIRST ROW -->
 
         <div class="row">
@@ -56,13 +56,12 @@
                 <div class="question-display"></div>
                 <br>
                 <!-- DISPLAYS THE BUTTON ARRAY  -->
-                <div id="button-display"></div>
-
-                <!-- DISPLAYS WHETHER USER IS RIGHT OR WRONG WITH IMAGE AND SOUND -->
-                <div class="areYouRight">
-                </div>
-
-                <!-- DISPLAYS THE LAST PAGE WITH STATS AND THE PLAY AGAIN BUTTON  -->
+                <ul id="button-display"></ul>
+                
+                <!-- DISPLAYS WHETHER USER IS RIGHT OR WRONG -->
+                <div class="areYouRight"></div>
+              
+                <!-- DISPLAYS THE LAST PAGE WITH STATS AND GETS INITIALS FOR HIGH SCORE  -->
                 <div class="final-page" style="display: none">
                     <div id="message"></div>
                     <div id="score"></div>
@@ -70,9 +69,9 @@
                     <div id="incorrect"></div>
                     <br>
                     <div id="initials">
-                        <form action="/action_page.php">
-                            Enter initials: <input type="text" name="initials" value=" "><br>
-                            <input type="submit" class="start" style="display: inline; margin-left:10px; background:#4B0082; color:white; border-radius: 5px;" value="Submit">
+                        <form>
+                            Enter initials: <input type="text" id= "userInput" name="initials" value=" "><br>
+                            <input type="button" id ="submitInitials" style = "color:white;" value="Submit">
                         </form>
 
                     </div>
@@ -82,8 +81,12 @@
                     <!-- </div> -->
                 </div>
                 <div class="highScorePage" style="display:none">
-                    <div id="hsTitle"></div>
-                    <div id="hsList"></div>
+                    <h1 id="hsTitle">Highscores</h1>
+                    <ul id="hsArray"></ul>
+                    <div>
+                            <button type="button"  id="goBack">Go Back</button>
+                            <button type="button"  id="resetScores">Reset Highscores</button>
+                        </div>
                 </div>
             </div>
         </div>
