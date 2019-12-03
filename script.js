@@ -195,13 +195,16 @@ var quizQuestion = {
         //empty buttons 
         $("#button-display").empty();
         // for loop to display answer buttons on the screen 
+        
         for (var i = 0; i < this.questions[this.questionNumber].questionAnswer.length; i++) {
+            $("#button-display").append("<li>");
             var a = $("<button>");
             a.addClass("answerButton");
             a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]);
             a.text(this.questions[this.questionNumber].questionAnswer[i]);
             //display button
-            $("#button-display").append(a);            
+            $("#button-display").append(a);  
+            $("#button-display").append("</li>");          
         };
     },
 
@@ -218,7 +221,7 @@ var quizQuestion = {
             // display win message and image and play sound
             //var foo = "<hr/>";
             //$(".areYouRight").append(foo);// append the hr
-            //document.body.appendChild(hrLine);
+            //$(".areYouRight").append("<hr /");
             $(".areYouRight").html("Correct!");
             // next question 
             this.questionNumber++;
@@ -265,11 +268,6 @@ var quizQuestion = {
         $(".areYouRight").empty();
         $(".timer").hide();
         $(".final-page").show();
-        // set high score
-        //if(quizQuestion.counter > highScore){
-        //  highScore = quizQuestion.counter;
-        //$(".highScore").html("Highscore: " + highScore);
-        //}
         $("#message").html("<h2>All done!</h2><p>Here are your results:</p>");
         $("#score").html("Your final score is " + quizQuestion.counter);
         $("#correct").html("Correct Guesses: " + this.correctGuesses);
@@ -295,7 +293,6 @@ var quizQuestion = {
 
         //Assign boxValue to equal the submitted initials
         var boxValue = document.getElementById('userInput').value; //Need help here 
-        //alert(boxValue);
 
         // Create object to hold high score data
         const scoreValues = {
@@ -304,6 +301,7 @@ var quizQuestion = {
         };
 
         const MAX_HIGH_SCORES = 5;
+
         console.log(scoreValues);
         //Create array to store high scores
         const highScoresArray = JSON.parse(localStorage.getItem("highScoresArray")) || [];
@@ -325,33 +323,16 @@ var quizQuestion = {
         console.log(highScoresArray);
 
         // Create the list
-
         const highScoresList = document.getElementById("#hsArray");
         const highScores = JSON.parse(localStorage.getItem("highScoresArray")) || [];
 
-        //highScoresList.innerHTML = highScores
+            // Use .map to sort out initials and score from the highScoresArray
             highScoresArray.map(scoreValues => {
                 if(scoreValues.score !=0){
                 console.log(scoreValues.initials + " --- " + scoreValues.score);
                 $("#hsArray").append('<li>' + scoreValues.initials + " --- " + scoreValues.score + '</li>');
-                //return '<li class="high-score">${scoreValues.name}--${scoreValues.score}<li>';
                 }
             });
-           // .join("");
-
-
-
-
-
-        /*for (var i = 0; i < highScoresArray.length; i++) {
-            // Display the array of top 5 highest scores with initials to the screen
-            if (highScoresArray[i] != null) {
-                $("#hsArray").append('<li>' + JSON.stringify(highScoresArray[i]) + '</li>');
-                console.log(highScoresArray[i]);
-            } else {
-                console.log("null value in high scores");
-            }
-        }*/
     }
 }
 
