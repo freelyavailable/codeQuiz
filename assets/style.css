@@ -6,8 +6,8 @@ header {
     width:100%;
 }
 
-h2 {
-
+hr {
+    border:2px solid teal;
 }
 
 form{
