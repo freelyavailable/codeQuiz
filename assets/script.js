@@ -16,7 +16,7 @@ $(".btn-dark").on("click", function () {
     quizQuestion.correctGuesses = 0;
     quizQuestion.incorrectGuesses = 0;
     quizQuestion.getQuestion();
-
+    document.getElementById('userInput').value = " ";
 })
 
 // ON CLICK FOR RESET BUTTON - RESETS GAME
@@ -120,8 +120,8 @@ var quizQuestion = {
         },
         {
             questionText: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-            questionAnswer: ['<script name="xxx.js">', '<script src="xxx.js">', '<script href="xxx.js">', '<script call="xxx.js">'],
-            answer: '<script src="xxx.js">',
+            questionAnswer: ['<script name = "xxx.js">', '<script src = "xxx.js">', '<script href = "xxx.js">', '<script call = "xxx.js">'],
+            answer: '<script src = "xxx.js">',
         },
         {
             questionText: 'How do you write "Hello World" in an alert box?',
@@ -140,8 +140,8 @@ var quizQuestion = {
         },
         {
             questionText: "How to write an IF statement in JavaScript?",
-            questionAnswer: ["if(i==5)", "if i==5 then", "if i = 5", "if i = 5 then"],
-            answer: "if(i==5)",
+            questionAnswer: ["if(i == 5)", "if i == 5 then", "if i = 5", "if i = 5 then"],
+            answer: "if(i == 5)",
         },
         {
             questionText: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
@@ -150,7 +150,7 @@ var quizQuestion = {
         },
         {
             questionText: "How does a WHILE loop start?",
-            questionAnswer: ["while (i <= 10)", "while i = 1 to 10", "while(i <= 10; i++)", "while i <= 10"],
+            questionAnswer: ["while (i <= 10)", "while i = 1 to 10", "while(i <= 10;  i++)", "while i <= 10"],
             answer: "while (i <= 10)",
         },
         {
@@ -286,13 +286,15 @@ var quizQuestion = {
         $("#button-display").hide();
         $(".highScorePage").show();
         $("#hsArray").show();
+        
+
         console.log("completed highScore Page");
 
         //Create array to hold this games score and initials
         //https://www.youtube.com/watch?v=DFhmNLKwwGw
 
         //Assign boxValue to equal the submitted initials
-        var boxValue = document.getElementById('userInput').value; //Need help here 
+        var boxValue = document.getElementById('userInput').value; 
 
         // Create object to hold high score data
         const scoreValues = {

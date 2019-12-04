@@ -7,7 +7,7 @@
     <title>Coding Quiz Challenge</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -54,7 +54,7 @@
             </div>
 
             <!-- SECOND COLUMN IN THE ROW -->
-            <div class="col-lg-12">
+            <div class="col-lg-12" id="removePadding">
 
                 <br>
                 <!-- DISPLAYS THE CURRENT QUESTION  -->
@@ -75,15 +75,12 @@
                     <br>
                     <div id="initials">
                         <form>
-                            Enter initials: <input type="text" id= "userInput" name="initials" value=" "><br>
+                            Enter initials:<input type="text" id= "userInput" name="initials" placeholder="Enter initials here">
                             <input type="button" id ="submitInitials" style = "color:white;" value="Submit">
                         </form>
-
                     </div>
                     <div id="photo"></div>
-                    <!-- <div> -->
-                        <!-- <button type="button" class="btn btn-secondary" id="start">Try Again</button> -->
-                    <!-- </div> -->
+                  
                 </div>
                 <div class="highScorePage" style="display:none">
                     <h1 id="hsTitle">Highscores</h1>
@@ -98,7 +95,7 @@
     </div>
     </div>
     <!-- LINK TO JAVASCRIPT FILE -->
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 
 </body>
 
