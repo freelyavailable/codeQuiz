@@ -218,10 +218,7 @@ var quizQuestion = {
             // increment the number correct 
             this.correctGuesses++;
             console.log(this.correctGuesses);
-            // display win message and image and play sound
-            //var foo = "<hr/>";
-            //$(".areYouRight").append(foo);// append the hr
-            //$(".areYouRight").append("<hr /");
+            // display win message with teal hr
             $(".areYouRight").html("<hr id='win'/>Correct!");
             // next question 
             this.questionNumber++;
@@ -233,8 +230,7 @@ var quizQuestion = {
             console.log(this.incorrectGuesses);
             //Deduct 5 seconds for incorrect answer
             quizQuestion.counter = quizQuestion.counter - 5;
-            // display lose message and image and play sound
-            //document.body.child[0].child[1].appendChild(hrLine);
+            // display lose message with red hr
             $(".areYouRight").html("<hr id='lose'/> Wrong!");
             // next question   
             this.questionNumber++;
@@ -294,8 +290,11 @@ var quizQuestion = {
         //https://www.youtube.com/watch?v=DFhmNLKwwGw
 
         //Assign boxValue to equal the submitted initials
-        var boxValue = document.getElementById('userInput').value; 
-
+        var boxValue = document.getElementById('userInput').value.toUpperCase(); 
+        if (boxValue == false){
+            console.log("no value entered for initials:" + boxValue);
+            boxValue = "***";
+        };
         // Create object to hold high score data
         const scoreValues = {
             score: quizQuestion.counter,   // Time left on clock assigned to 

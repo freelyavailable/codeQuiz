@@ -8,6 +8,7 @@ header {
 
 #win {
     border:2px solid teal;
+    
 }
 
 #lose {
@@ -60,7 +61,7 @@ input{
 }
 
 .card-title{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .timer { 
@@ -87,25 +88,6 @@ input{
     font-size: 24px;
 }
 
-/*.answerButton{ 
-    background: #4B0082;
-    color: white; 
-    border-radius: 5px; 
-    width: auto; 
-    margin: 10px; 
-    padding:5px 10px 5px 10px;
-}
-
-#start{
-    text-align: center;
-    background: #4B0082;
-    color: white; 
-    border-radius: 5px;
-    width: auto; 
-    margin: 10px; 
-    padding:5px 10px 5px 10px;
-}*/
-
 #resetScores, #goBack, #start, .answerButton{
     text-align: center;
     background: #4B0082;
@@ -117,13 +99,8 @@ input{
 }
 
 #resetScores, #goBack, .answerButton{
-    text-align: center;
-    background: #4B0082;
-    color: white; 
-    border-radius: 5px;
-    width: auto; 
-    margin: 10px 0px 10px 0px ; 
-    padding:5px 15px 5px 15px;
+    margin: 10px 0px 10px 0px; 
+    
 }
 
 .areYouRight{
@@ -142,20 +119,20 @@ input{
 }
 #hsTitle{
     font-weight: bold;
-    padding-bottom: 30px;
 }
 
 #userInput{
     border:1px solid lightgrey;
+    
 }
 #hsArray{
-    padding: 0px;
+    padding: 5px 0px 0px 0px;
 }
 #hsArray li{
     border:1px solid lightgrey;
     background:#ede1f7;
-    margin-top: 10px;
-    padding:2px;
+    margin: 10px 0px 0px 0px;
+    padding:2px 2px 2px 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
     color:black !important;
     
@@ -197,5 +174,12 @@ input{
         #removePadding{
             padding: 0px !important;
         }
+
+        #win, #lose{
+            margin:5px 0px 5px 0px;  
+        }
+      .card-text{
+          margin: 0px;
+      }
     
   }
