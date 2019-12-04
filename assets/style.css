@@ -6,8 +6,12 @@ header {
     width:100%;
 }
 
-hr {
+#win {
     border:2px solid teal;
+}
+
+#lose {
+    border:2px solid red;
 }
 
 form{

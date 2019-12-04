@@ -222,7 +222,7 @@ var quizQuestion = {
             //var foo = "<hr/>";
             //$(".areYouRight").append(foo);// append the hr
             //$(".areYouRight").append("<hr /");
-            $(".areYouRight").html("<hr />Correct!");
+            $(".areYouRight").html("<hr id='win'/>Correct!");
             // next question 
             this.questionNumber++;
         }
@@ -235,7 +235,7 @@ var quizQuestion = {
             quizQuestion.counter = quizQuestion.counter - 5;
             // display lose message and image and play sound
             //document.body.child[0].child[1].appendChild(hrLine);
-            $(".areYouRight").html("<hr /> Wrong!");
+            $(".areYouRight").html("<hr id='lose'/> Wrong!");
             // next question   
             this.questionNumber++;
         }
