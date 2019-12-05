@@ -11,8 +11,18 @@
 </head>
 
 <body>
-
-
+    <!-- Sound effect for correct answer -->
+    <audio id="win">
+        <source src="media/service-bell_daniel_simion.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Sound effect for incorrect answer -->
+    <audio id="lose">
+        <source src="media/Robot_blip-Marianne_Gagnon-120342607.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Sound effect for timeout -->
+    <audio id="timeout">
+        <source src="media/Smashing-Yuri_Santana-1233262689.mp3" type="audio/mpeg"> -->
+    </audio>
     <!-- DEFINES THE QUIZ CONTAINER -->
     <header>
         <div class="highScore">View Highscores</div>
@@ -26,26 +36,26 @@
             <div class="col-lg-12">
                 <!-- CARD DISPLAY WITH START BUTTON -->
                 <div class="card" style="width: 100%">
-                    
+
                     <div class="card-body">
                         <h1 class="card-title">Coding Quiz Challenge</h1>
-                        <hr id = "win"/>
-                        <p class="card-text">This test will assess your knowledge of basic 
-                            
+                        <hr id="win" />
+                        <p class="card-text">This test will assess your knowledge of basic
+
                             JavaScript with 10 multiple choice questions.
-                            
-                            Click the "Start" button to begin the quiz. 
-                            
+
+                            Click the "Start" button to begin the quiz.
+
                             You will have 75 seconds to complete the assessment.
-                            
+
                             Each incorrect answer will cost you 5 seconds of clock time.
-                            
-                            Your score will your be your time remaining. 
+
+                            Your score will your be your time remaining.
                             <br>
-                           <br>
-                            <strong>Good Luck!</strong> 
+                            <br>
+                            <strong>Good Luck!</strong>
                         </p>
-                        <hr id = "win"/>
+                        <hr id="win" />
                     </div>
                     <div>
                         <div>
@@ -64,10 +74,12 @@
                 <br>
                 <!-- DISPLAYS THE BUTTON ARRAY  -->
                 <ul id="button-display"></ul>
-                
+
                 <!-- DISPLAYS WHETHER USER IS RIGHT OR WRONG -->
-                <div class="areYouRight"></div>
-              
+                <div class="areYouRight">
+                    <div class="timeout"></div>
+                </div>
+
                 <!-- DISPLAYS THE LAST PAGE WITH STATS AND GETS INITIALS FOR HIGH SCORE  -->
                 <div class="final-page" style="display: none">
                     <div id="message"></div>
@@ -77,21 +89,23 @@
                     <br>
                     <div id="initials">
                         <form>
-                            Enter initials:<input type="text" placeholder="Enter initials here" id= "userInput" name="initials">
-                            <input type="button" id ="submitInitials" style = "color:white;" value="Submit">
+                            Enter initials:<input type="text" placeholder="Enter initials here" id="userInput"
+                                name="initials">
+                            <input type="button" id="submitInitials" style="color:white;" value="Submit">
                         </form>
                     </div>
-                    <div id="photo"></div>
-                  
+                    
+
                 </div>
                 <div class="highScorePage" style="display:none">
                     <h1 id="hsTitle">Highscores</h1>
-                    <hr id = "win"/>
+                    <hr id="win" />
                     <ul id="hsArray"></ul>
+                    <!-- <hr id = "win"/> -->
                     <div>
-                            <button type="button"  id="goBack">Go Back</button>
-                            <button type="button"  id="resetScores">Reset Highscores</button>
-                        </div>
+                        <button type="button" id="goBack">Try Again</button>
+                        <button type="button" id="resetScores">Reset Highscores</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,130 +1,93 @@
-# Unit 04 Web APIs Homework: Code Quiz
-
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment. These assessments are typically a combination of multiple-choice questions and interactive challenges. In this homework assignment, your challenge is to build a code quiz with multiple-choice questions.
-
-
-## Instructions
-
-From scratch, build a timer-based quiz application that stores high scores client-side. Following the [common templates for user stories](https://en.wikipedia.org/wiki/User_story#Common_templates), we can frame this challenge as follows:
-
-```
-As a coding bootcamp student
-I want to take a timed quiz on JavaScript fundamentals that stores high scores
-so that I can gauge my progress compared to my peers
-```
-
-//Javascript timer.  
--Mech to start.   
--bootstrap buttons for answers
--if answer is wronng then 2 seconds deducted from timer
--if correct then one point added to total score
--next question
--repeat until the end of question
--Display the total number of question correct and inncorrect.  
-onclick fnctions needed.  
-Timer
+# codeQuiz
+Homework #4
 
 
-How do you deliver this? Here are some guidelines:
+***codeQuiz***
 
-* Play proceeds as follows:
+-READ ME 
+-Homework 4 
+-codeQuiz
+-Version: 1.0.0 
+-Web Design By Tripp Parham 
+-Published: Thursday December 5th 2019
 
-  * The user arrives at the landing page and is presented with a call-to-action to "Start Quiz." Also note the navigation option to "View Highscores" and the "Time" value set at 0.
+***Configuration instructions***
 
-  * Clicking the "Start Quiz" button presents the user with a series of questions. The timer is initialized with a value and immediately begins countdown.
+-Goto the following link:
 
-  * Score is calculated by time remaining. Answering quickly and correctly results in a higher score. Answering incorrectly results in a time penalty (for example, 15 seconds are subtracted from time remaining).
+https://wilpar4813.github.io/codeQuiz/
 
-  * When time runs out and/or all questions are answered, the user is presented with their final score and asked to enter their initials. Their final score and initials are then stored in `localStorage`.
+-Click the Generate Password button
 
-* Your application should also be responsive, ensuring that it adapts to multiple screen sizes.
+-You will be able to select a password length of from 8 to 128 characters.  Enter password lenght in prompt.  Click Cancel to exit program.
+-Select from the following 4 options for character type.  You can pick as many types as you want but you must select at least one type.  Pease answer all 4 prompts.  The OK button signals yes and the Cancel button signals no.
+-The new password will be displayed in the "Your Secure Password" field.  You can scroll the window if your password length exceeds the size of the text box.
+-At this point the "Copy to Clipboard" button can be clicked to copy the password to clipboard so it can be pasted to fields that accept pasting.
+-Or, the "Generate Password" button can be pressed to generate another password.  **Note** this will clear the previos password.
 
-* Refer to the animated GIF below for a demonstration of the application functionality.
+***Installation instructions***
 
-![code quiz](./Assets/04-Web-APIs-homework-demo.gif)
+-No installatin necessary. Any main stream browser can be used.
 
+***Operating instructions***
 
-### Hints
+-The Password Grenerator Webpage contains
+***List of files included in the following structure***
 
-* Store your questions as an array of objects in a separate file, `questions.js`, that follows this format:
+-README.md (Read for information on site development) 
+-index.html  
+-style.css
+-Included in main folder are 2 images of the program running.  One has 8 random characters.  The other has 128 random characters streched out on a single line.  This is a good display of the randomizing capabilities of the program.
 
-```js
-var questions = [
-  {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
-  },
-  {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
-  },
-  ///etc.
-];
-```
+***Copyright and licensing information***
 
-* The length of the array in `questions.js` determines the length of play. Fifteen seconds per question is a good estimate, so 5 questions will result in a length of play of 75 seconds.
+Bell for correct answers created and licensed by:
 
+About: Customer ringing service bell in need of help in a store.
+Title: Service Bell Help
+Uploaded: 5.09.18 
+License: Attribution 3.0 
+Recorded by Daniel Simion 
+File Size: 270 KB 
+Downloads: 191123
 
-## Minimum Requirements
+Bleep sound effect for incorrect answers created and licensed by:
 
-* Functional, deployed application.
+About: A beeping sound that could suit a computer robot or any high-tech apparatus
+Title: Robot Blip
+Uploaded: 01.11.11 
+License: Attribution 3.0 
+Recorded by Marianne Gagnon 
+File Size: 120 KB 
+Downloads: 130928
 
-* GitHub repository with README describing project.
+Smashing sound effect for game time-out
 
-* The first view of the application displays a button that starts the quiz.
+About: Smash or smashing sound effect. almost sounds like a pumpkin or something like that splattering all over the pavement.
+Title: Smashing
+Uploaded: 11.09.11
+License: Attr-Noncommercial 3.0
+Recorded by Yuri Santana
+File Size: 315 KB
+Downloads: 196952
 
-* Clicking the start button displays a series of questions.
+***Contact information for the distributor or programmer***
 
-* Once the quiz begins, a timer starts.
+Site Developer: Tripp Parham Email: tripp.parham@me.com 
 
-* If a question is answered incorrectly, additional time is subtracted from the timer.
-
-* The timer stops when all questions have been answered or the timer reaches 0.
-
-* After the game ends, the user can save their initials and score to a highscores view using local storage.
-
-## Bonus
-
-* Add audio files to alert the user of correct or incorrect answers. Be sure to include the appropriate license.
-
-* Customize the application theme.
-
-* Create multiple quizzes and an option for users to choose between them.
-
-* Add the application to your portfolio.
-
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
-
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
-
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
+***Known bugs[0]***
 
 
-## Submission on BCS
+***Troubleshooting[6]***
 
-You are required to submit the following:
+-
 
-* The URL of the deployed application
+***Credits and acknowledgments***
 
-* The URL of the GitHub repository
+Special thanks to the Instructors and Staff at the UNC Coding Bootcamp. They are an awesome team.:-) Also I couldn't have completed this project without my tutor, Karen Largent. Thanks to my Mom in heaven that paid for my Bootcamp. Also special thanks to my wife, who hasn't seen me much recently, for her kind patience in dealing with my coding frustrations.
 
+***Change Log***
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+***Site Updates***
+
+-Verion 1.0.0 Released Saturday Noverber 23rd 2019

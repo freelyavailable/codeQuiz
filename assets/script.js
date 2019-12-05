@@ -170,9 +170,12 @@ var quizQuestion = {
         quizQuestion.counter--;
         $(".timer").html("Time: " + quizQuestion.counter);
         if (quizQuestion.counter <= 0) {
+            $("#timeout")[0].play();
             quizQuestion.counter = 0;
             clearInterval(quizQuestion.countDownTimer);
             quizQuestion.finalPage();
+            
+            //$("#initials").html("Sorry!  You timed out.")
             $(".question-display").hide();
             $("#button-display").hide();
         }
@@ -215,6 +218,7 @@ var quizQuestion = {
 
         if (selectedAnswer === this.questions[this.questionNumber].answer) {
             console.log("win");
+            $("#win")[0].play();
             // increment the number correct 
             this.correctGuesses++;
             console.log(this.correctGuesses);
@@ -224,6 +228,7 @@ var quizQuestion = {
             this.questionNumber++;
         }
         else {
+            $("#lose")[0].play();
             console.log("lose");
             // increment incorrect guess 
             this.incorrectGuesses++;
@@ -290,11 +295,13 @@ var quizQuestion = {
         //https://www.youtube.com/watch?v=DFhmNLKwwGw
 
         //Assign boxValue to equal the submitted initials
-        var boxValue = document.getElementById('userInput').value.toUpperCase(); 
+        var boxValue = document.getElementById('userInput').value.toUpperCase().substring(0, 4); 
+        //boxValue = document.getElementById('userInput').value.substring(0, 3);
         if (boxValue == false){
             console.log("no value entered for initials:" + boxValue);
             boxValue = "***";
         };
+        
         // Create object to hold high score data
         const scoreValues = {
             score: quizQuestion.counter,   // Time left on clock assigned to 

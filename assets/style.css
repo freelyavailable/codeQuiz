@@ -88,7 +88,7 @@ input{
     font-size: 24px;
 }
 
-#resetScores, #goBack, #start, .answerButton{
+#resetScores, #goBack, #start, #tryAgain, .answerButton{
     text-align: center;
     background: #4B0082;
     color: white; 
@@ -98,7 +98,7 @@ input{
     padding:5px 15px 5px 15px;
 }
 
-#resetScores, #goBack, .answerButton{
+#resetScores, #goBack, #tryAgain, .answerButton{
     margin: 10px 0px 10px 0px; 
     
 }
