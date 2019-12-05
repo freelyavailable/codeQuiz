@@ -128,7 +128,7 @@ var quizQuestion = {
             questionAnswer: ['msg("Hello World");', 'msgBox("Hello World");', 'alert("Hello World");', 'alertBox("Hello World");'],
             answer: 'alert("Hello World");',
         },
-        {
+        /*{
             questionText: "How do you create a function in JavaScript?",
             questionAnswer: ["function myFunction[]", "function = myFunction()", "function:myFunction()", "function myFunction()"],
             answer: "function = myFunction()",
@@ -142,22 +142,22 @@ var quizQuestion = {
             questionText: "How to write an IF statement in JavaScript?",
             questionAnswer: ["if(i == 5)", "if i == 5 then", "if i = 5", "if i = 5 then"],
             answer: "if(i == 5)",
-        },
+        },*/
         {
             questionText: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
             questionAnswer: ["if(i <> 5)", "if i <> 5", "if i =! 5 then", "if (i != 5)"],
             answer: "if (i != 5)",
         },
-        {
+        /*{
             questionText: "How does a WHILE loop start?",
             questionAnswer: ["while (i <= 10)", "while i = 1 to 10", "while(i <= 10;  i++)", "while i <= 10"],
             answer: "while (i <= 10)",
         },
-        {
+        /*{
             questionText: "How can you add a comment in a JavaScript?",
             questionAnswer: ["<!--This is a comment-->", '"This is a comment"', "// This is a comment", "***This is a comment***"],
             answer: "// This is a comment",
-        },
+        },*/
     ],
 
     run: function () {
