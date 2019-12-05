@@ -234,7 +234,7 @@ var quizQuestion = {
             this.incorrectGuesses++;
             console.log(this.incorrectGuesses);
             //Deduct 5 seconds for incorrect answer
-            quizQuestion.counter = quizQuestion.counter - 5;
+            quizQuestion.counter = quizQuestion.counter - 10;
             // display lose message with red hr
             $(".areYouRight").html("<hr id='lose'/> Wrong!");
             // next question   
