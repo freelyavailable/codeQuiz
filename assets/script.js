@@ -265,6 +265,7 @@ var quizQuestion = {
     finalPage: function () {
         // empty and hide divs
         $(".question-display").empty();
+        
         $("#button-display").empty();
         $(".areYouRight").empty();
         $(".timer").hide();
@@ -278,6 +279,7 @@ var quizQuestion = {
     highScorePage: function () {
         // Hide elements on page for highScorePage Element
         clearInterval(quizQuestion.countDownTimer);
+        
         $(".card").hide();
         $(".final-page").hide();
         $(".timer").hide();
