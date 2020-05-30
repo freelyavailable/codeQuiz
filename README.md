@@ -22,7 +22,7 @@ As a web developer, you will probably be asked to complete a coding assessment. 
 
 -   No installation necessary. Any main stream browser can be used.
 -   Click the following link:
--   https://wilpar4813.github.io/codeQuiz/
+    https://wilpar4813.github.io/codeQuiz/
 
 # Operating instructions
 
@@ -33,9 +33,9 @@ As a web developer, you will probably be asked to complete a coding assessment. 
         -   If the user finished the test, the final score along with correct guesses and incorrect guesses is displayed.
             -   The user will be asked to enter initials and submit. Only the first three characters will be used and will be changed to all caps.
             -   The user is taken to the highscore page.
-    -   If the user clicks "View High Scores" or after initials are submitted, the highscores page will be displayed.  
-         _ If the users score is in the top 5, it will appear in the list. The user may then go back to try again or user can clear the highscores.
-        _ If the "Clear Highscores" buuon is clicked, the highscores are removed from the page. \* If "Back" button is clicked, the start page re-apears so the process can start over again.
+    -   If the user clicks "View High Scores" or after initials are submitted, the highscores page will be displayed.
+        -   If the users score is in the top 5, it will appear in the list. The user may then go back to try again or user can clear the highscores.
+        -   If the "Clear Highscores" buuon is clicked, the highscores are removed from the page. \* If "Back" button is clicked, the start page re-apears so the process can start over again.
 
 # List of files included in the following structure
 
@@ -45,6 +45,7 @@ As a web developer, you will probably be asked to complete a coding assessment. 
 -   assets folder
     -   style.css
     -   script.js
+    -   codeQuiz.png
 -   media folder
     -   Audio file - Robot_blip-Marianne_Gagnon-120342607.mp3
     -   Audio file - Smashing-Yuri_Santana-1233262689.mp3
@@ -88,7 +89,7 @@ As a web developer, you will probably be asked to complete a coding assessment. 
 
 # Known bugs[1]
 
--   If user scores 0 or times out the submit initials field still appears. This needs to be fixed in the next release.
+-   If user scores 0 or times out the submit initials field still appears. This need to be changed in the next release.
 
 # Troubleshooting[7]
 
@@ -103,8 +104,6 @@ As a web developer, you will probably be asked to complete a coding assessment. 
 # Credits and acknowledgments
 
 ### Special thanks to the Instructors and Staff at the UNC Coding Bootcamp. They are an awesome team.:-) I recommnend Trilogy to anyone that wants to learn Javascript Web Development. They have a fine tuned program and lots of great resources.
-
-# Change Log
 
 # Site Updates
 
