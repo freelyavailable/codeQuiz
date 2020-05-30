@@ -2,8 +2,6 @@
 
 ## READ ME
 
-### codeQuiz
-
 ### Version: 1.0.0
 
 ### Web Design By Tripp Parham
@@ -12,7 +10,7 @@
 
 # Description
 
-As a web developer, you will probably be asked to complete a coding assessment. These assessments are typically a combination of multiple-choice questions and interactive challenges. In app challenges the user Javascript with multiple-choice questions. The test is timed and graded at the end. Also, keep high scores to measure improvement.
+As a web developer, you will probably be asked to complete a coding assessment. These assessments are typically a combination of multiple-choice questions and interactive challenges. In app challenges the user Javascript with multiple-choice questions. The test is timed and graded at the end. Also, keep high scores to measure improvement. This app utilizes html, css, javascript, and local storage.
 
 # Screenshots
 
