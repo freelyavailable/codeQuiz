@@ -16,7 +16,7 @@ As a web developer, you will probably be asked to complete a coding assessment. 
 
 # Screenshots
 
-![Code Quiz Image](./codeQuiz2.png)
+![Code Quiz Image](./assets/codeQuiz.png)
 
 # Installation instructions
 
